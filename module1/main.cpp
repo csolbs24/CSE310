@@ -1,9 +1,14 @@
 #include <iostream>
 using namespace std;
 
-const char* blank = " ";
-const char* x = "x";
-const char* o = "o";
+//const char* blank = " ";
+//const char* x = "x";
+//const char* o = "o";
+//
+//bool isCharBlank(char* c) {
+//    if (c == NULL) return true;
+//    if (c[0] == ' ') return true;
+//}
 
 class TicTacToe {
 public:
@@ -13,7 +18,13 @@ public:
         for (int i = 0; i < 3; i++) {
             cout << "┃ ";
             for (int j = 0; j < 3; j++) {
-                cout << board[i][j] << " ┃ ";
+                if (board[i][j] == ' ') {
+                    cout << i * 3 + j + 1;
+                }
+                else {
+                    cout << board[i][j];
+                }
+                cout << " ┃ ";
             }
             cout << "\n";
             if (i != 2) {
@@ -27,11 +38,14 @@ public:
     void updateBoard() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if ((i + j) % 2 == 0) {
-                    board[i][j] = *x;
+                if ((i + j) % 3 == 0) {
+                    board[i][j] = 'x';
+                }
+                else if ((i + j) % 3 == 1) {
+
                 }
                 else {
-                    board[i][j] = *o;
+                    board[i][j] = 'o';
                 }
             }
         }
@@ -39,7 +53,7 @@ public:
     TicTacToe() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                board[i][j] = *blank;
+                board[i][j] = ' ';
             }
         }
     }
@@ -47,7 +61,6 @@ public:
 
 int main() {
     TicTacToe ticTacToe = TicTacToe();
-    ticTacToe.updateBoard();
     ticTacToe.printBoard();
     return 0;
 } 
