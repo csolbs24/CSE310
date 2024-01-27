@@ -48,6 +48,9 @@ public:
         // Update the proper index with O on an even turn and X on an odd turn
         board[boardIndex / 3][boardIndex % 3] = ((turnNumber % 2 == 0) ? 'O' : 'X');
     }
+    char getBoardValueAtIndex(int index) {
+        return board[index / 3][index % 3];
+    }
     int getPlayerInput() {
         // Initialize playIndex and playIndexChar
         int playIndex;
@@ -63,8 +66,12 @@ public:
         // chars are stored in c++ as an index of what char they are, subtracting '1' will give us the exact int that we want.
         playIndex = playIndexChar - '1';
 
-        // If playIndex is out of the acceptable range, then ask the user for input again
-        while ((playIndex < 0) || (playIndex > 8)) {
+        // If playIndex is out of the acceptable range, or is an already used index, then ask the user for input again
+        while (
+            (playIndex < 0) ||
+            (playIndex > 8) ||
+            (getBoardValueAtIndex(playIndex) != ' '))
+        {
             cout << "That was not a valid move. Try again: ";
 
             // Get input from the player
