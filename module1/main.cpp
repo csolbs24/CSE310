@@ -48,6 +48,34 @@ public:
         // Update the proper index with O on an even turn and X on an odd turn
         board[boardIndex / 3][boardIndex % 3] = ((turnNumber % 2 == 0) ? 'O' : 'X');
     }
+    int getPlayerInput() {
+        // Initialize playIndex and playIndexChar
+        int playIndex;
+        char playIndexChar;
+
+        // Print to the console the current player's turn and ask where they want to play
+        cout << ((turnNumber % 2 == 0) ? "O" : "X");
+        cout << "\'s turn. Type index of where you want to play: ";
+
+        // Get input from the player
+        cin >> playIndexChar;
+
+        // chars are stored in c++ as an index of what char they are, subtracting '1' will give us the exact int that we want.
+        playIndex = playIndexChar - '1';
+
+        // If playIndex is out of the acceptable range, then ask the user for input again
+        while ((playIndex < 0) || (playIndex > 8)) {
+            cout << "That was not a valid move. Try again: ";
+
+            // Get input from the player
+            cin >> playIndexChar;
+
+            // chars are stored in c++ as an index of what char they are, subtracting '1' will give us the exact int that we want.
+            playIndex = playIndexChar - '1';
+        }
+
+        return playIndex;
+    }
     bool didWin() {
         // Check across each row
         for (int i = 0; i < 3; i++) {
@@ -114,15 +142,8 @@ int main() {
         // Increment the turnNumber to keep track of which player's turn it is and to know when a stalemate occurs
         ticTacToe.turnNumber++;
 
-        // Print to the console the current player's turn and ask where they want to play
-        cout << ((ticTacToe.turnNumber % 2 == 0) ? "O" : "X");
-        cout << "\'s turn. Type index of where you want to play: ";
-
-        // Get input form the player
-        cin >> playIndexChar;
-
-        // chars are stored in c++ as an index of what char they are, subtracting '1' will give us the exact int that we want.
-        playIndex = playIndexChar - '1';
+        // Ask the player where they want to play and get their input
+        playIndex = ticTacToe.getPlayerInput();
 
         // Update the board where the current player is playing
         ticTacToe.updateBoard(playIndex);
