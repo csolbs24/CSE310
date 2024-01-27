@@ -1,15 +1,6 @@
 #include <iostream>
 using namespace std;
 
-//const char* blank = " ";
-//const char* x = "x";
-//const char* o = "o";
-//
-//bool isCharBlank(char* c) {
-//    if (c == NULL) return true;
-//    if (c[0] == ' ') return true;
-//}
-
 class TicTacToe {
 public:
     char board[3][3];
@@ -32,21 +23,6 @@ public:
             }
             else {
                 cout << "┗━━━┻━━━┻━━━┛\n";
-            }
-        }
-    }
-    void updateBoard() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if ((i + j) % 3 == 0) {
-                    board[i][j] = 'x';
-                }
-                else if ((i + j) % 3 == 1) {
-
-                }
-                else {
-                    board[i][j] = 'o';
-                }
             }
         }
     }
