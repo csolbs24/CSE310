@@ -131,8 +131,7 @@ int main() {
     // Initialize the TicTacToe object
     TicTacToe ticTacToe = TicTacToe();
 
-    // Initialize two variables to hold what the current player's move is
-    char playIndexChar;
+    // Initialize a variable to hold the index of where the player wants to play
     int playIndex;
 
     // Loop through the game logic until a player wins
