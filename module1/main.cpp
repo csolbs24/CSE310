@@ -157,6 +157,8 @@ int main() {
     }
     while (!ticTacToe.didWin());
 
+    ticTacToe.printBoard();
+
     cout << "Congratulations! " << ((ticTacToe.turnNumber % 2 == 0) ? "O" : "X") << " has won!!!";
 
     return 0;
