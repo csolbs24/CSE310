@@ -4,30 +4,48 @@ using namespace std;
 class TicTacToe {
 public:
     int turnNumber = 0;
-    char board[3][3];
+    char board[3][3]{};
     void printBoard() {
+        // Print the top of the board
         cout << "┏━━━┳━━━┳━━━┓\n";
+
+        // Loop through each row of the board
         for (int i = 0; i < 3; i++) {
+
+            // Print "┃ " to start each row
             cout << "┃ ";
+
+            // Loop through each column in the row
             for (int j = 0; j < 3; j++) {
+
+                // If the current location hasn't been played on yet, print the index of the board location instead
                 if (board[i][j] == ' ') {
                     cout << i * 3 + j + 1;
                 }
+                // Otherwise print either the X or the O stored here
                 else {
                     cout << board[i][j];
                 }
+
+                // Build the rest of the grid for this row
                 cout << " ┃ ";
             }
+
+            // Create a new line
             cout << "\n";
-            if (i != 2) {
-                cout << "┣━━━╋━━━╋━━━┫\n";
-            }
-            else {
+
+            // If it's the final row, end the grid
+            if (i == 2) {
                 cout << "┗━━━┻━━━┻━━━┛\n";
+            }
+                // Otherwise print a middle grid section
+            else {
+                cout << "┣━━━╋━━━╋━━━┫\n";
             }
         }
     }
     void updateBoard(int boardIndex) {
+        // Update the proper index with O on an even turn and X on an odd turn
         board[boardIndex / 3][boardIndex % 3] = ((turnNumber % 2 == 0) ? 'O' : 'X');
     }
     bool didWin() {
@@ -65,6 +83,7 @@ public:
         return false;
     }
     TicTacToe() {
+        // Loop through each index and initialize it to ' '
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 board[i][j] = ' ';
@@ -74,25 +93,43 @@ public:
 };
 
 int main() {
+    // Initialize the TicTacToe object
     TicTacToe ticTacToe = TicTacToe();
+
+    // Initialize two variables to hold what the current player's move is
     char playIndexChar;
     int playIndex;
+
+    // Loop through the game logic until a player wins
     do {
+        // Check for a stalemate and return early
         if (ticTacToe.turnNumber > 8) {
             cout << "You stalemate. You bad. Try again??";
             return 0;
         }
+
+        // Print the current state of thie board
         ticTacToe.printBoard();
+
+        // Increment the turnNumber to keep track of which player's turn it is and to know when a stalemate occurs
         ticTacToe.turnNumber++;
+
+        // Print to the console the current player's turn and ask where they want to play
         cout << ((ticTacToe.turnNumber % 2 == 0) ? "O" : "X");
         cout << "\'s turn. Type index of where you want to play: ";
+
+        // Get input form the player
         cin >> playIndexChar;
+
+        // chars are stored in c++ as an index of what char they are, subtracting '1' will give us the exact int that we want.
         playIndex = playIndexChar - '1';
+
+        // Update the board where the current player is playing
         ticTacToe.updateBoard(playIndex);
     }
     while (!ticTacToe.didWin());
 
     cout << "Congratulations! " << ((ticTacToe.turnNumber % 2 == 0) ? "O" : "X") << " has won!!!";
-    
+
     return 0;
 } 
