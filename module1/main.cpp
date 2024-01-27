@@ -143,7 +143,7 @@ int main() {
             return 0;
         }
 
-        // Print the current state of thie board
+        // Print the current state of the board
         ticTacToe.printBoard();
 
         // Increment the turnNumber to keep track of which player's turn it is and to know when a stalemate occurs
