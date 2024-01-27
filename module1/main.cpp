@@ -77,8 +77,11 @@ int main() {
     TicTacToe ticTacToe = TicTacToe();
     char playIndexChar;
     int playIndex;
-    int temp = 0;
     do {
+        if (ticTacToe.turnNumber > 8) {
+            cout << "You stalemate. You bad. Try again??";
+            return 0;
+        }
         ticTacToe.printBoard();
         ticTacToe.turnNumber++;
         cout << ((ticTacToe.turnNumber % 2 == 0) ? "O" : "X");
@@ -86,13 +89,10 @@ int main() {
         cin >> playIndexChar;
         playIndex = playIndexChar - '1';
         ticTacToe.updateBoard(playIndex);
-
-
-        temp++;
     }
     while (!ticTacToe.didWin());
 
-
-
+    cout << "Congratulations! " << ((ticTacToe.turnNumber % 2 == 0) ? "O" : "X") << " has won!!!";
+    
     return 0;
 } 
