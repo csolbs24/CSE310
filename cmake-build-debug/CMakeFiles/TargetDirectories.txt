@@ -1,3 +1,0 @@
-/home/carter/Documents/github/CSE310/cmake-build-debug/CMakeFiles/CSE310.dir
-/home/carter/Documents/github/CSE310/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/carter/Documents/github/CSE310/cmake-build-debug/CMakeFiles/rebuild_cache.dir
