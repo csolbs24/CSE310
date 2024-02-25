@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Web site created using create-snowpack-app" />
+    <link rel="stylesheet" type="text/css" href="/index.css" />
+    <script defer type="module" src="/dist/index.js"></script>
+    <title>Snowpack App</title>
+  </head>
+  <body>
+    <canvas id="game-board"></canvas>
+    <div id="menu">
+      <h1>
+        Conway's Game of Life
+      </h1>
+      <label for="board-size">Board Size: </label>
+      <input id="board-size" type="number" min="3" max="100" value="50" />
+      <button id="step">Step</button>
+    </div>
+  </body>
+</html>
